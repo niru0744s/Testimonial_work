@@ -1,0 +1,51 @@
+const mongoose = require("mongoose");
+const newSchema = mongoose.Schema({
+    fullName:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+    },
+    designation:{
+        type:String,
+    },
+    company:{
+        type:String,
+    },
+    profilePic:{
+        type:String,
+    },
+    rating:{
+        type:Number,
+        min:1,
+        max:5,
+        required:true,
+    },
+    title:{
+        type:String,
+        required:true,
+    },
+    feedback:{
+        type:String,
+        required:true,
+    },
+    mediaUrl:{
+        type:String,
+    },
+    consent:{
+        type:Boolean,
+        required:true,
+    },
+    status:{
+    type:String,
+    enum:['pending','approved','rejected'],
+    default:'pending'
+}
+},{
+    timestamps:true
+})
+
+module.exports = mongoose.model("testimonial",newSchema);
